@@ -2,7 +2,7 @@
 var generateBtn = document.querySelector("#generate");
 
 function generatePassword (){
-  window.prompt(" Welcome! Please enter you")
+  window.prompt("Choose a password length (must be 8 - 128 characters) ");
 
 }
 
