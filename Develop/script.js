@@ -1,10 +1,31 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-function generatePassword (){
-  window.prompt("Choose a password length (must be 8 - 128 characters) ");
+//possible password variables and values
+
+function generatePassword () {
+  alert("You are about to generate a password.\nPress ok to continue ");
+
+var passwordLength = prompt("Choose the length of you password.\nEnter number from 8 - 128 long");
+var passwordLengthResult = {
+  charSet : "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
+  numericList : "0123456789",
+  symbols : "!@#$%-+=/^&"
+
+};
+
+if
+
+  
 
 }
+  
+  
+
+
+
+
+  
 
 // Write password to the #password input
 function writePassword() {
@@ -15,5 +36,7 @@ function writePassword() {
 
 }
 
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
