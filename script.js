@@ -12,11 +12,11 @@ function generatePassword () {
     
    
 //Prompts user to confirm their password length selections
-    var passwordLength = (prompt("How long would you like your password be?\nEnter number between 8 - 100"));
+    var passwordLength = (prompt("How long would you like your password be?\nEnter number between 8 - 128"));
 
 // Loop if answer is outside parameter
-    while (parseInt(passwordLength) < 8 || parseInt(passwordLength) > 100 ) {
-        alert("Too short! Password must be 8 - 100 characters");
+    while (parseInt(passwordLength) < 8 || parseInt(passwordLength) > 128 ) {
+        alert("Invalid! Password must be between 8 - 128 characters");
         return generatePassword();
     
 } 
