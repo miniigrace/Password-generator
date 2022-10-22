@@ -20,22 +20,24 @@ function generatePassword () {
         return generatePassword();
     
 } 
-
+// If input is invalid (entered letters instead of numbers)
     if (isNaN(passwordLength)) {
         alert("Invalid number! Try again");
         return generatePassword();
 
-} 
+} // If input is valid, user was confirmed about the chosen length
     else {
         alert("Your password will have " + passwordLength + " characters long");
         length = parseInt(passwordLength)
      
     }
 
+//List of password criterias
 var passwordHasCharSet = confirm("Password will both have lowercase and uppercase characters.\nPress\n'OK = Yes\n'Cancel'= No");
 var passwordHasNumericSet = confirm("Password will have numeric characters.\nPress\n'OK = Yes\n'Cancel'= No");
 var passwordHasSymbolsSet = confirm("Password will have special characters.\nPress\n'OK = Yes\n'Cancel'= No");
 
+// An empty array where the selected criteria will be stored
 var passLengthResult = [];
 
     if (passwordHasCharSet === true) {
@@ -49,7 +51,7 @@ var passLengthResult = [];
     if (passwordHasSymbolsSet === true) {
     passLengthResult = [ ...passLengthResult, ...symbolsSet]
 }
-  if (passLengthResult.length < 1 ) {
+  if (passLengthResult.length < 1 ) { // Prompts user to choose at least 1 criteria
       alert("Must choose at least one criteria" );
       return generatePassword()
       } 
