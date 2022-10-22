@@ -7,21 +7,21 @@ var symbolsSet = "!@#$%-+=/^&".split('');
 var length; 
 
 function generatePassword () {
-// User 
+// User alerts about generating password
    alert("You are about to generate a password with 8 - 128 characters long");
     
    
-//Prompts user about the criteria in generating password
+//Prompts user to confirm their password length selections
     var passwordLength = (prompt("How long would you like your password be?\nEnter number between 8 - 100"));
 
-
-    if (parseInt(passwordLength) < 8 || parseInt(passwordLength) > 100 ) {
+// Loop if answer is outside parameter
+    while (parseInt(passwordLength) < 8 || parseInt(passwordLength) > 100 ) {
         alert("Too short! Password must be 8 - 100 characters");
         return generatePassword();
     
 } 
 
-    else if (isNaN(passwordLength)) {
+    if (isNaN(passwordLength)) {
         alert("Invalid number! Try again");
         return generatePassword();
 
