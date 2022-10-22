@@ -1,54 +1,74 @@
-// Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-//possible variables and values
-var charSet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+// Possible variables and values
+var charSet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","YZ"];
 var numericSet = ["0","1","2","3","4","5","6","7","8","9"];
-var symbols = "!@#$%-+=/^&";
-
-
+var symbolsSet = "!@#$%-+=/^&".split('');
+var length; 
 
 function generatePassword () {
-
+// User 
+   alert("You are about to generate a password with 8 - 128 characters long");
+    
+   
 //Prompts user about the criteria in generating password
-var passwordLength = prompt("You are about to generate a password.\nChoose the number of your password length.\nMust be 8 - 128 long");
+    var passwordLength = (prompt("How long would you like your password be?\nEnter number between 8 - 100"));
 
-//if user cancels
-if (!passwordLength) {
-    return;
-}
-// if user entered letters which is invalid then prompts to enter number
-if (!passwordLength.charSet) {
-    prompt("Invalid number! Enter number between 8 -128");
-    return;
 
+    if (parseInt(passwordLength) < 8 || parseInt(passwordLength) > 100 ) {
+        alert("Too short! Password must be 8 - 100 characters");
+        return generatePassword();
+    
 } 
 
-if (passwordLength < 8 || passwordLength > 128) {
-  alert("Too short");
-  return generatePassword(); 
+    else if (isNaN(passwordLength)) {
+        alert("Invalid number! Try again");
+        return generatePassword();
+
+} 
+    else {
+        alert("Your password will have " + passwordLength + " characters long");
+        length = parseInt(passwordLength)
+     
+    }
+
+var passwordHasCharSet = confirm("Password will both have lowercase and uppercase characters.\nPress\n'OK = Yes\n'Cancel'= No");
+var passwordHasNumericSet = confirm("Password will have numeric characters.\nPress\n'OK = Yes\n'Cancel'= No");
+var passwordHasSymbolsSet = confirm("Password will have special characters.\nPress\n'OK = Yes\n'Cancel'= No");
+
+var passLengthResult = [];
+
+    if (passwordHasCharSet === true) {
+    passLengthResult = [ ...passLengthResult, ...charSet]
 }
 
+    if (passwordHasNumericSet === true) {
+    passLengthResult = [ ...passLengthResult, ...numericSet]
 }
 
+    if (passwordHasSymbolsSet === true) {
+    passLengthResult = [ ...passLengthResult, ...symbolsSet]
+}
+  if (passLengthResult.length < 1 ) {
+      alert("Must choose at least one criteria" );
+      return generatePassword()
+      } 
 
+console.log(passLengthResult)
 
-/*
-function generatePassword() {
-    alert("You are about to generate password.\nPress 'Ok' to continue");
+var generatedPassword = [];
 
-var passwordLength = prompt("Choose the length of you password.\nEnter number from 8 - 128 long");
-var passwordLengthResult = {
-  charSet : "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
-  numericList : "0123456789",
-  symbols : "!@#$%-+=/^&"
+    for (var i = 0; i < length; i++) {
+        generatedPassword.push(passLengthResult[Math.floor(Math.random() * passLengthResult.length)]);
+        console.log(generatedPassword)
+    }
+     
 
-  }
-};*/
+    return generatedPassword.join('');
 
+    
 
-
-  
+}
 
 // Write password to the #password input
 function writePassword() {
@@ -61,4 +81,4 @@ function writePassword() {
 
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword); 
+generateBtn.addEventListener("click", writePassword);
